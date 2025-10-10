@@ -14,21 +14,18 @@ class Contact
     string numb;
     string darkest_secret;
     public:
-    // Constructor
-    Contact(string first,string last,string nick, string a,string darkest) 
-        { first_name = first; last_name=last;nickname=nick; numb = a;darkest_secret=darkest; }
-    // ------
+   
     string getfirst_name() 
         {return first_name;}
     void setfirst_name(string first) 
         {first_name = first;}
     // ------
-     string getlast_name() 
+    string getlast_name() 
         {return last_name;}
     void setlast_name(string last) 
         {last_name = last;}
     // ------
-     string getnicknam() 
+    string getnicknam() 
         {return nickname;}
     void setnicknam(string nick) 
         {nickname = nick;}
@@ -38,17 +35,22 @@ class Contact
     void setNumb(string a) 
         {numb = a;}
     // ------
-     string getdarkest_secret() 
+    string getdarkest_secret() 
         {return darkest_secret;}
     void setName(string darkest) 
         {darkest_secret = darkest;}
+    // ------ 
+    // Constructor
+    Contact(string first,string last,string nick, string a,string darkest) 
+        { first_name = first; last_name=last;nickname=nick; numb = a;darkest_secret=darkest; }
     // ------
     void display() const {
-        cout << "first name: " << first_name << ", last name: " << last_name << ", nickname: " << nickname << ", numb: " << numb << ", darkest secret: " << darkest_secret << endl;
+        cout << "first name: " << first_name << endl << "last name: " << last_name << endl << "nickname: " << nickname << endl << "numb: " << numb << endl << "darkest secret: " << darkest_secret << endl;
     }
     ~Contact() {
     // std::cout << "Contact destroyed: " << first_name << std::endl;
-}
+    }
+
 };
 
 
@@ -63,11 +65,73 @@ public:
     void setContact(size_t i, Contact c) {
         if (i >= 0 && i < contacts.size()) contacts[i] = c;
     }
-    void showClass() const {
-        for (size_t i = 0; i < contacts.size(); i++) {
-            contacts[i].display();
+    void showClass() 
+    {
+        std::cout << "     index| firstname|  lastname|  nickname|" << std::endl;
+        for (size_t i = 0; i < contacts.size(); i++) 
+        {
+            int s = 0;
+            while(s < 9)
+            {
+                cout << " ";
+                s++;
+            }
+            cout << i << "|";
+            // -------
+            if (contacts[i].getfirst_name().size() <= 10)
+            {
+                int j = 10 - contacts[i].getfirst_name().size();
+                s = 0;
+                while(s < j)
+                {
+                   cout << " ";
+                   s++;
+                }
+                cout << contacts[i].getfirst_name() << "|";
+            }
+            else
+            {
+                cout << contacts[i].getfirst_name().substr(0, 9) + "." << "|";
+            }
+            // ------
+             if (contacts[i].getlast_name().size() <= 10)
+            {
+                int j = 10 - contacts[i].getlast_name().size();
+                s = 0;
+                while(s < j)
+                {
+                   cout << " ";
+                   s++;
+                }
+                cout << contacts[i].getlast_name() << "|";
+            }
+            else
+            {
+                cout << contacts[i].getlast_name().substr(0, 9) + "." << "|";
+            }
+            // -----
+             if (contacts[i].getnicknam().size() <= 10)
+            {
+                int j = 10 - contacts[i].getnicknam().size();
+                s = 0;
+                while(s < j)
+                {
+                   cout << " ";
+                   s++;
+                }
+                cout << contacts[i].getnicknam() << "|" << endl;
+            }
+            else
+            {
+               cout << contacts[i].getnicknam().substr(0, 9) + "." << "|" << endl;
+            }
         }
+        
     }
+    void getContact(int index)
+    {
+            contacts[index].display();
+    } 
 };
 
 void display()
@@ -161,7 +225,16 @@ int main()
         }
         if("SEARCH" == input)
         {
+            int index;
             ph.showClass();
+            std::cout << "shoos ure index" << std::endl;
+            cin >> index;
+            while (cin.fail() || index < 0 || index >= i) 
+            {
+                cout << "Invalid index, please inter a corect one" << endl;
+                cin >> index;
+            }       
+            ph.getContact(index);
         }
         else if ("EXIT" == input)
             break;
