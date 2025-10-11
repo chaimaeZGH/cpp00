@@ -63,8 +63,10 @@ public:
         contacts.push_back(newContact);
     }
     
-    void setContact(size_t i, Contact c) {
-        if (i >= 0 && i < contacts.size()) contacts[i] = c;
+    void setContact(size_t i, Contact c) 
+    {
+        if (i >= 0 && i < contacts.size()) 
+            contacts[i] = c;
     }
     void showClass() 
     {
