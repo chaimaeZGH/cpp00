@@ -12,16 +12,14 @@ int main()
     std::string input;
     PhoneBook ph;
     int i = 0;
-    int j = 0;
-    bool ajs = true;
-    while (ajs)
+    while (1)
     {
         display();
         std::getline(std::cin,input);
         if (std::cin.eof())
         {
             std::cout << "End of input reached.\n";
-            ajs=false;
+            break;
         }
         if("ADD" == input)
         {
@@ -76,36 +74,28 @@ int main()
             // ------
             
             Contact con(fi_name,la_name,ni_name,line,desec);
-            if(i == 8)
-            {
-                ph.setContact((size_t)j, con);
-                j++;
-                if(j == 8)
-                    j = 0;
-            }
-            else
-            {
-                ph.addContact(con);
-                i++;
-            }
+            ph.addContact(con,i);
         }
-        if("SEARCH" == input)
+        if ("SEARCH" == input)
         {
             int index;
-            ph.showClass();
-            std::cout << "shoos ure index" << std::endl;
+            ph.showClass(i);
+            std::cout << "choose your index" << std::endl;
             std::cin >> index;
-            while (std::cin.fail() || index < 0 || index >= i) 
+            if (i > 8)
+                i = 8;
+            while (std::cin.fail() || index < 0 || index >= i)
             {
-                std::cout << "Invalid index, please inter a corect one" << std::endl;
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Invalid index, please enter a correct one" << std::endl;
+                std::cin.clear();
+                std::cin.ignore();
                 std::cin >> index;
             }
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.ignore();
             ph.getContact(index);
         }
         else if ("EXIT" == input)
-            ajs=false;
+            break;
     }
     return 0;
 }

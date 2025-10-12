@@ -1,14 +1,17 @@
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
-SRCS = main.cpp
+SRCS = main.cpp clasese.cpp
 NAME = My_Awesome_PhoneBook
 OBJS = $(SRCS:.cpp=.o)
+HEADER = All.hpp
 
-all: $(NAME)
+all: $(NAME)	
 
 $(NAME): $(OBJS)
 	$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+
+$(OBJS): $(HEADER)
 
 clean:
 	$(RM) $(OBJS)
