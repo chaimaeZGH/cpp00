@@ -1,10 +1,10 @@
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
-SRCS = main.cpp clasese.cpp
-NAME = My_Awesome_PhoneBook
+SRCS = main.cpp Contact.cpp Phonebook.cpp
+NAME = PhoneBook
 OBJS = $(SRCS:.cpp=.o)
-HEADER = All.hpp
+HEADER = Contact.hpp Phonebook.hpp
 
 all: $(NAME)	
 

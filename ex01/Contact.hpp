@@ -1,11 +1,9 @@
-#ifndef ALL_HPP
-#define ALL_HPP
-
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 #include <iostream>
 #include <string>
-#include <vector>
 #include <cctype>
-// using namespace std;
+
 class Contact
 {
     private:
@@ -17,12 +15,10 @@ class Contact
     public:
    Contact() {}
     std::string getfirst_name();
-    
     std::string getlast_name(); 
     std::string getnicknam();
     std::string getNumb(); 
     std::string getdarkest_secret(); 
-
     // Constructor
     Contact(std::string first,std::string last,std::string nick, std::string a,std::string darkest) ;
     // ------
@@ -30,16 +26,6 @@ class Contact
     ~Contact() {
     // std::std::cout << "Contact destroyed: " << first_name << std::endl;
     }
-};
-
-
-class PhoneBook {
-private:       
-    Contact contacts[8];
-public:
-    void addContact(Contact s,int &index);
-    void showClass(int index);
-    void getContact(int index); 
 };
 
 #endif

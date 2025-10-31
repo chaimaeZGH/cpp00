@@ -1,4 +1,4 @@
-#include "All.hpp"
+#include "Phonebook.hpp"
 
 void display()
 {
@@ -26,50 +26,89 @@ int main()
             // ------
             std::cout << "give the first name" << std::endl;
             std::string fi_name;
-            std::getline(std::cin,fi_name);
-            while (fi_name.empty())
+            while (1) 
             {
-                std::cout << "first name cant be empty" << std::endl;
-                std::getline(std::cin,fi_name);
+                if (!std::getline(std::cin, fi_name)) 
+                {
+                    std::cout << "Input error or end of file" << std::endl;
+                    exit(1);
+                }
+    
+                if (fi_name.empty()) 
+                    std::cout << "First name can't be empty" << std::endl;
+                else
+                    break;
             }
              // ------
             std::cout << "give the last name" << std::endl;
             std::string la_name;
-            std::getline(std::cin,la_name);
-            while (la_name.empty())
+            while (1) 
             {
-                std::cout << "last name cant be empty" << std::endl;
-                std::getline(std::cin,la_name);
+                if (!std::getline(std::cin, la_name)) 
+                {
+                    std::cout << "Input error or end of file" << std::endl;
+                    exit(1);
+                }
+    
+                if (la_name.empty()) 
+                    std::cout << "last name cant be empty" << std::endl;
+                else
+                    break;
             }
             // ------
             std::cout << "nick name the name" << std::endl;
             std::string ni_name;
-            std::getline(std::cin,ni_name);
-            while (ni_name.empty())
+           while (1) 
             {
-                std::cout << "nick name cant be empty" << std::endl;
-                std::getline(std::cin,ni_name);
+                if (!std::getline(std::cin, ni_name)) 
+                {
+                    std::cout << "Input error or end of file" << std::endl;
+                    exit(1);
+                }
+    
+                if (ni_name.empty()) 
+                    std::cout << "last name cant be empty" << std::endl;
+                else
+                    break;
             }
             // ------
             std::cout << "give the numberme" << std::endl;
             std::string line;
-            std::getline(std::cin, line);
-            for (size_t i = 0; i < line.length(); i++)
+            while (1) 
             {
-                if(!std::isdigit(line[i]))
+                bool valid = true;
+                if (!std::getline(std::cin, line)) 
                 {
-                    std::cout << "please inter valid phone number" << std::endl;
-                    std::getline(std::cin, line);
+                    std::cout << "Input error or end of file" << std::endl;
+                    exit(1);
                 }
+                for (size_t i = 0; i < line.length(); i++)
+                {
+                    if(!std::isdigit(line[i]))
+                    {  
+                        valid = false;
+                        std::cout << "please inter valid phone number" << std::endl;
+                        std::getline(std::cin, line);
+                    }
+                }
+                if(valid)
+                    break;
             }
             // ------
             std::cout << "give the darkest secret" << std::endl;
             std::string desec;
-            std::getline(std::cin,desec);
-            while (desec.empty())
+            while (1) 
             {
-                std::cout << "darkest secret cant be empty" << std::endl;
-                std::getline(std::cin,desec);
+                if (!std::getline(std::cin, desec)) 
+                {
+                    std::cout << "Input error or end of file" << std::endl;
+                    exit(1);
+                }
+    
+                if (desec.empty()) 
+                    std::cout << "last name cant be empty" << std::endl;
+                else
+                    break;
             }
             // ------
             
@@ -84,15 +123,33 @@ int main()
             std::cin >> index;
             if (i > 8)
                 i = 8;
-            while (std::cin.fail() || index < 0 || index >= i)
+            while(1)
             {
-                std::cout << "Invalid index, please enter a correct one" << std::endl;
-                std::cin.clear();
-                std::cin.ignore();
-                std::cin >> index;
+                if(std::cin.eof())
+                {
+                    std::cout << "Input error or end of file" << std::endl;
+                    exit(1);
+                }
+                if(i==0)
+                {
+                    std::cin.ignore();
+                    std::cout << "empty phonebook, add contact first" << std::endl;
+                    break;
+                }
+                if (std::cin.fail() || index < 0 || index >= i)
+                {
+                    std::cout << "Invalid index, please enter a correct one" << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore();
+                    std::cin >> index;
+                }
+                else
+                {
+                    std::cin.ignore();
+                    ph.getContact(index);
+                    break;
+                }
             }
-            std::cin.ignore();
-            ph.getContact(index);
         }
         else if ("EXIT" == input)
             break;
