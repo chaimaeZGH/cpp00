@@ -10,6 +10,7 @@ std::string Contact:: getNumb()
         {return numb;}
 std::string Contact:: getdarkest_secret() 
         {return darkest_secret;}
+Contact :: Contact() {}
 Contact :: Contact(std::string first,std::string last,std::string nick, std::string a,std::string darkest) 
         { first_name = first; last_name=last;nickname=nick; numb = a;darkest_secret=darkest; }
 void Contact::showdisplay()

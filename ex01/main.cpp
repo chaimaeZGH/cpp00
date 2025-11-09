@@ -3,7 +3,7 @@
 void display()
 {
     std::cout << "******** PHONE BOOK ********" << std::endl;
-    std::cout << "    ADD = save a new contact\n    SEARCH = display a specific contact\n    EXIT = exit phone book" << std::endl;
+    std::cout << "    ADD = save a new contact\n    SEARCH = display a contact\n    EXIT = exit phone book" << std::endl;
     std::cout << "YOUR CHOICE --> ";
 }
 
@@ -74,7 +74,7 @@ int main()
             // ------
             std::cout << "give the numberme" << std::endl;
             std::string line;
-            while (1) 
+             while (1) 
             {
                 bool valid = true;
                 if (!std::getline(std::cin, line)) 
@@ -88,7 +88,7 @@ int main()
                     {  
                         valid = false;
                         std::cout << "please inter valid phone number" << std::endl;
-                        std::getline(std::cin, line);
+                        break;
                     }
                 }
                 if(valid)
@@ -106,7 +106,7 @@ int main()
                 }
     
                 if (desec.empty()) 
-                    std::cout << "last name cant be empty" << std::endl;
+                    std::cout << "darkest secret cant be empty" << std::endl;
                 else
                     break;
             }
@@ -132,7 +132,7 @@ int main()
                 }
                 if(i==0)
                 {
-                    std::cin.ignore();
+                    std::cin.ignore(10000, '\n');
                     std::cout << "empty phonebook, add contact first" << std::endl;
                     break;
                 }
@@ -140,12 +140,12 @@ int main()
                 {
                     std::cout << "Invalid index, please enter a correct one" << std::endl;
                     std::cin.clear();
-                    std::cin.ignore();
+                    std::cin.ignore(10000, '\n');
                     std::cin >> index;
                 }
                 else
                 {
-                    std::cin.ignore();
+                    std::cin.ignore(10000, '\n');
                     ph.getContact(index);
                     break;
                 }

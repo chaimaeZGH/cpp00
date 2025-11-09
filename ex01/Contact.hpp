@@ -13,7 +13,7 @@ class Contact
     std::string numb;
     std::string darkest_secret;
     public:
-   Contact() {}
+    Contact();
     std::string getfirst_name();
     std::string getlast_name(); 
     std::string getnicknam();
@@ -23,9 +23,6 @@ class Contact
     Contact(std::string first,std::string last,std::string nick, std::string a,std::string darkest) ;
     // ------
     void showdisplay();
-    ~Contact() {
-    // std::std::cout << "Contact destroyed: " << first_name << std::endl;
-    }
 };
 
 #endif
