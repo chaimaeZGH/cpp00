@@ -91,6 +91,11 @@ int main()
                         break;
                     }
                 }
+                if (line.empty())
+                { 
+                    valid = false;
+                    std::cout << "phone number cant be empty" << std::endl;
+                }
                 if(valid)
                     break;
             }
