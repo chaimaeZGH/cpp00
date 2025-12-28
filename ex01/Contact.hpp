@@ -15,10 +15,10 @@ class Contact
     public:
     Contact();
     std::string getfirst_name();
-    std::string getlast_name(); 
+    std::string getlast_name();
     std::string getnicknam();
-    std::string getNumb(); 
-    std::string getdarkest_secret(); 
+    std::string getNumb();
+    std::string getdarkest_secret();
     // Constructor
     Contact(std::string first,std::string last,std::string nick, std::string a,std::string darkest) ;
     // ------

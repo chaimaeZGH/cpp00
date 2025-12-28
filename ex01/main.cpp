@@ -1,5 +1,14 @@
 #include "Phonebook.hpp"
 
+std::string trim_good(const std::string& str)
+{
+    size_t first = str.find_first_not_of(" ");
+    if (first == std::string::npos)
+        return "";
+    size_t last = str.find_last_not_of(" ");
+    return str.substr(first, last - first + 1);
+}
+
 void display()
 {
     std::cout << "******** PHONE BOOK ********" << std::endl;
@@ -33,7 +42,7 @@ int main()
                     std::cout << "Input error or end of file" << std::endl;
                     exit(1);
                 }
-    
+                fi_name=trim_good(fi_name);
                 if (fi_name.empty()) 
                     std::cout << "First name can't be empty" << std::endl;
                 else
@@ -49,7 +58,7 @@ int main()
                     std::cout << "Input error or end of file" << std::endl;
                     exit(1);
                 }
-    
+                la_name = trim_good(la_name);
                 if (la_name.empty()) 
                     std::cout << "last name cant be empty" << std::endl;
                 else
@@ -65,7 +74,7 @@ int main()
                     std::cout << "Input error or end of file" << std::endl;
                     exit(1);
                 }
-    
+                ni_name=trim_good(ni_name);
                 if (ni_name.empty()) 
                     std::cout << "last name cant be empty" << std::endl;
                 else
@@ -109,7 +118,7 @@ int main()
                     std::cout << "Input error or end of file" << std::endl;
                     exit(1);
                 }
-    
+                desec=trim_good(desec);
                 if (desec.empty()) 
                     std::cout << "darkest secret cant be empty" << std::endl;
                 else
@@ -132,7 +141,7 @@ int main()
             {
                 if(std::cin.eof())
                 {
-                    std::cout << "Input error or end of file" << std::endl;
+                    std::cout << "end of file" << std::endl;
                     exit(1);
                 }
                 if(i==0)
